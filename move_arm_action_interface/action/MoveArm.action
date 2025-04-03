@@ -1,0 +1,17 @@
+## header 
+std_msgs/Header header  
+
+MoveReq[] instructions
+---
+# result
+int32 error_code
+int32 SUCCESSFUL = 0
+int32 INVALID_GOAL = -1
+
+string error_str
+---
+# feedback
+
+string status
+int32 move_index 
+string move_type
