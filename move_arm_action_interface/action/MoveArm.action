@@ -1,21 +1,12 @@
-## header 
 std_msgs/Header header  
-
-MoveReq[] instructions # list of instructions
+MoveReq[] instructions  # list of instructions
 ---
-# result
-int32 error_code # status code
-
-###
-# error code Enum
-###
+# Result
+int32 error_code        # error code
 int32 SUCCESSFUL = 0
 int32 INVALID_GOAL = -1
 
-string error_str # error message
+string error_str        # error message
 ---
-# feedback
-
-string status # status of the move
-int32 move_index # i-th instruction index executed
-string move_type # i-th move_type executed
+# Feedback
+string status           # status of the move
