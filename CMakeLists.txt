@@ -24,7 +24,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "action/MoveArm.action"
   "msg/PoseRPY.msg"
   "msg/MoveReq.msg"
-  "srv/Vacuum.srv"
+  "srv/SetOutput.srv"
   DEPENDENCIES geometry_msgs std_msgs builtin_interfaces
 )
 

@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  pull_request:
+    branches:
+      - humble-release
+    types:
+      - closed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged == true }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Containerized Build
+        uses: ./.github/actions/build_deb 
+
+      - name: Get Package Info
+        id: package_info
+        run: |
+          FILE_PATH=$(ls deb/*.deb | head -n 1)
+          VERSION=$(dpkg-deb -f "$FILE_PATH" Version)
+          PACKAGE_NAME=$(dpkg-deb -f "$FILE_PATH" Package)
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "FILE_PATH=$FILE_PATH" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: deb/*.deb
+          tag_name: v${{ env.VERSION }}
+          name: "${{ env.PACKAGE_NAME }} v${{ env.VERSION }}"
+          body: "Release of ${{ env.PACKAGE_NAME }} version ${{ env.VERSION }}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

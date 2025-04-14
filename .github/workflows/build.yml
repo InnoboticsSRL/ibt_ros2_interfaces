@@ -1,0 +1,19 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - humble-mcx
+  pull_request:
+    branches:
+      - humble-mcx
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Containerized Build
+        uses: ./.github/actions/build
