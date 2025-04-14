@@ -1,13 +1,28 @@
-# IBT ROS2 INTERFACES
+# IBT ros2 interfaces
 
-## move arm interface
+## MoveArm
+*MoveArm.action* provides the interface to send movements to the arm controller and to retrieve their status. It's defined as follow:
+```bash
+# Request
+std_msgs/Header header  
+MoveReq[] instructions  # list of instructions
+---
+# Result
+int32 error_code        # error code
+int32 SUCCESSFUL = 0
+int32 INVALID_GOAL = -1
 
-This interface declare the action type that the move_arm_action_server accept.
- - The Goal is composed by a std_msg header and a vector of Instructions of MoveReq type.
+string error_str        # error message
+---
+# Feedback
+string status           # status of the move
+```
 
- - The Result is an error code and an error string
- 
- - The Feedback is composed by as status string, a move_index instruction and a move_type
+With the *MoveReq.msg* you can command the following type of movements:
+- PTP
+- LIN
+- JOINT
+- CIRC
 
-the message "MoveReq" defines the structure of the instruction to be executed
-the "PoseRPY" defines the Eulerian format to describe the pose.
+## SetOutput
+*SetOutput.srv* allows to enable/disable our ethercat output module
