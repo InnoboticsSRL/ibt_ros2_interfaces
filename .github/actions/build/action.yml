@@ -1,0 +1,7 @@
+name: "ROS 2 Build .deb Action"
+description: "Build a ROS 2 package in a container and output .deb artifacts"
+inputs: {}
+outputs: {}
+runs:
+  using: "docker"
+  image: "Dockerfile"
