@@ -1,0 +1,5 @@
+uint16 clas
+uint8 instance
+---
+uint8 result_code
+uint16[] result
