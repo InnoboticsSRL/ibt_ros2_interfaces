@@ -26,3 +26,7 @@ With the *MoveReq.msg* you can command the following type of movements:
 
 ## SetOutput
 *SetOutput.srv* allows to enable/disable our ethercat output module
+
+## SetAttrAll - GetAttrAll
+- *SetAttrAll* allows to set certain ethernetip addreses 
+- *GetAttrAll* allows to get certain ethernetip addreses 
