@@ -1,4 +1,4 @@
-uint8 value
+bool[] data
 ---
 bool success
 string message
