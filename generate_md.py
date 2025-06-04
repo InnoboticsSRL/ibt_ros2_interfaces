@@ -154,7 +154,7 @@ def generate_documentation(pkg_path='ibt_ros2_interfaces', output_file='interfac
     srv_path =  'srv'
     action_path = 'action'
 
-    output = [f"# Interface Definitions for {pkg_path}", ""]
+    output = [f"# {pkg_path}", ""]
 
     if os.path.isdir(msg_path):
         print(f"ℹ️ Found msg directory: {msg_path}")
