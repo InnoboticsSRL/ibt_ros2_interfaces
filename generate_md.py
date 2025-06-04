@@ -147,7 +147,7 @@ def parse_action_file(path, rel_path):
 
     return out
 
-def generate_documentation(pkg_path='ibt_ros2_interfaces', output_file='interface_definitions.md'):
+def generate_documentation(pkg_path='ibt_ros2_interfaces', output_file='README.md'):
     print(f"ℹ️ Starting scan of package '{pkg_path}'")
 
     msg_path = 'msg'

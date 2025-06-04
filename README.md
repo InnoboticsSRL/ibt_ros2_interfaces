@@ -1,32 +1,86 @@
-# IBT ros2 interfaces
+# ibt_ros2_interfaces
 
-## MoveArm
-*MoveArm.action* provides the interface to send movements to the arm controller and to retrieve their status. It's defined as follow:
-```bash
-# Request
-std_msgs/Header header  
-MoveReq[] instructions  # list of instructions
----
-# Result
-int32 error_code        # error code
-int32 SUCCESSFUL = 0
-int32 INVALID_GOAL = -1
+## Messages
 
-string error_str        # error message
----
-# Feedback
-string status           # status of the move
-```
+### `ibt_ros2_interfaces/msg/MoveReq.msg`
 
-With the *MoveReq.msg* you can command the following type of movements:
-- PTP
-- LIN
-- JOINT
-- CIRC
+Move request message for a robotic ARM
 
-## SetOutput
-*SetOutput.srv* allows to enable/disable our ethercat output module
+- `int32 move_type`: Possible type of movement
+- `Waypoint[] waypoints`: List of waypoints to move through
+- `float64 angle`
+- `float64 velocity`
+- `float64 acceleration`
+- `float64 rotational_velocity`
+- `float64 rotational_acceleration`
 
-## SetAttrAll - GetAttrAll
-- *SetAttrAll* allows to set certain ethernetip addreses 
-- *GetAttrAll* allows to get certain ethernetip addreses 
+### `ibt_ros2_interfaces/msg/PoseRPY.msg`
+
+Eulerian pose
+
+- `float64 x`
+- `float64 y`
+- `float64 z`
+- `float64 roll`
+- `float64 pitch`
+- `float64 yaw`
+
+### `ibt_ros2_interfaces/msg/Waypoint.msg`
+
+Waypoint message for defining a target
+
+- `float64[6] pose`: pose in Cartesian or joint space
+- `float64 smoothing_factor`: waypoint smoothing factor in the range [0..1]
+- `float64 next_segment_velocity_factor`: segment velocity factor in the range [0..1]
+
+## Services
+
+### `ibt_ros2_interfaces/srv/GetAttrAll.srv`
+
+**Request**
+- `uint16 clas`
+- `uint8 instance`
+
+**Response**
+- `uint8 result_code`
+- `uint16[] result`
+
+### `ibt_ros2_interfaces/srv/SetAttrAll.srv`
+
+**Request**
+- `uint16 clas`
+- `uint8 instance`
+- `uint16[10] data`
+
+**Response**
+- `uint8 result_code`
+
+### `ibt_ros2_interfaces/srv/SetOutput.srv`
+
+**Request**
+- `bool[] data`
+
+**Response**
+- `bool success`
+- `string message`
+
+## Actions
+
+### `ibt_ros2_interfaces/action/MoveArm.action`
+
+**Goal**
+Request
+
+- `std_msgs/Header header`
+- `MoveReq[] requests`
+
+**Result**
+Result
+
+- `int32 error_code`: error code
+- `string error_str`: error message
+
+**Feedback**
+Feedback
+
+- `string status`: status of the move
