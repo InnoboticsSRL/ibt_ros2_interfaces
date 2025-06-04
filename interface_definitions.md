@@ -1,4 +1,4 @@
-# Interface Definitions for ibt_ros2_interfaces
+# ibt_ros2_interfaces
 
 ## Messages
 
