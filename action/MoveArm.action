@@ -1,6 +1,7 @@
 # Request
 std_msgs/Header header  
-MoveReq[] instructions  # list of instructions
+MoveReq[] requests
+
 ---
 # Result
 int32 error_code        # error code
