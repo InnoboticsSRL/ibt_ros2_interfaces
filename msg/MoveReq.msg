@@ -1,10 +1,12 @@
-int32 move_type # possible move to be executed
+# Move request message for a robotic ARM
+
+int32 move_type # Possible type of movement
 int32 PTP=0
 int32 LIN=1
 int32 JOINT=2
 int32 CIRC=3
 
-Waypoint[] waypoints
+Waypoint[] waypoints # List of waypoints to move through
 
 float64 angle
 float64 velocity
