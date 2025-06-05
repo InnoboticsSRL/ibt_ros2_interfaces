@@ -1,11 +1,12 @@
 # Request
 std_msgs/Header header  
-MoveReq[] instructions  # list of instructions
+MoveReq[] requests
+
 ---
 # Result
 int32 error_code        # error code
 int32 SUCCESSFUL = 0
-int32 INVALID_GOAL = -1
+int32 UNSUCCESSFUL = -1
 
 string error_str        # error message
 ---
