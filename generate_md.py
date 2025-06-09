@@ -1,4 +1,20 @@
 import os
+import xml.etree.ElementTree as ET
+
+def get_package_version(package_xml_path='package.xml'):
+    try:
+        tree = ET.parse(package_xml_path)
+        root = tree.getroot()
+        version_tag = root.find('version')
+        if version_tag is not None:
+            return version_tag.text.strip()
+        else:
+            print("⚠️ Version tag not found in package.xml")
+            return "unknown"
+    except Exception as e:
+        print(f"❌ Error reading package.xml: {e}")
+        return "unknown"
+
 
 def parse_fields(lines):
     description_lines = []
@@ -150,11 +166,13 @@ def parse_action_file(path, rel_path):
 def generate_documentation(pkg_path='ibt_ros2_interfaces', output_file='README.md'):
     print(f"ℹ️ Starting scan of package '{pkg_path}'")
 
+    version = get_package_version()
+
     msg_path = 'msg'
     srv_path =  'srv'
     action_path = 'action'
 
-    output = [f"# {pkg_path}", ""]
+    output = [f"# {pkg_path}", f"**Version:** `{version}`", ""] 
 
     if os.path.isdir(msg_path):
         print(f"ℹ️ Found msg directory: {msg_path}")

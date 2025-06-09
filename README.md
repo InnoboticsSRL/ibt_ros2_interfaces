@@ -1,4 +1,5 @@
 # ibt_ros2_interfaces
+**Version:** `1.4.1`
 
 ## Messages
 
@@ -45,6 +46,17 @@ Waypoint message for defining a target
 - `uint8 result_code`
 - `uint16[] result`
 
+### `ibt_ros2_interfaces/srv/GetInput.srv`
+
+**Request**
+Get Digital Inputs
+
+
+**Response**
+- `bool[] data`
+- `bool success`
+- `string message`
+
 ### `ibt_ros2_interfaces/srv/SetAttrAll.srv`
 
 **Request**
@@ -58,6 +70,8 @@ Waypoint message for defining a target
 ### `ibt_ros2_interfaces/srv/SetOutput.srv`
 
 **Request**
+Set Digital Outputs
+
 - `bool[] data`
 
 **Response**
