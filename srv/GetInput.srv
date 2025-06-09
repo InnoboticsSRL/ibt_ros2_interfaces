@@ -1,0 +1,5 @@
+# Get Digital Inputs
+---
+bool[] data
+bool success
+string message
