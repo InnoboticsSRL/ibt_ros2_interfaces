@@ -25,6 +25,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Waypoint.msg"
   "msg/MoveReq.msg"
   "msg/PoseRPY.msg"
+  "msg/VectorBool.msg"
   "srv/SetOutput.srv"
   "srv/GetInput.srv"
   "srv/SetAttrAll.srv"
