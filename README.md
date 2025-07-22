@@ -1,5 +1,5 @@
 # ibt_ros2_interfaces
-**Version:** `1.4.1`
+**Version:** `1.5.1`
 
 ## Messages
 
@@ -25,6 +25,10 @@ Eulerian pose
 - `float64 roll`
 - `float64 pitch`
 - `float64 yaw`
+
+### `ibt_ros2_interfaces/msg/VectorBool.msg`
+
+- `bool[] data`
 
 ### `ibt_ros2_interfaces/msg/Waypoint.msg`
 
@@ -80,6 +84,24 @@ Set Digital Outputs
 
 ## Actions
 
+### `ibt_ros2_interfaces/action/Docking.action`
+
+**Goal**
+Goal
+
+- `string command`
+
+**Result**
+Result
+
+- `bool success`
+- `string message`
+
+**Feedback**
+Feedback
+
+- `string current_status`
+
 ### `ibt_ros2_interfaces/action/MoveArm.action`
 
 **Goal**
@@ -98,3 +120,4 @@ Result
 Feedback
 
 - `string status`: status of the move
+- `int16 index`: index of the current request

@@ -22,9 +22,11 @@ ament_export_dependencies(geometry_msgs std_msgs)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "action/MoveArm.action"
+  "action/Docking.action"
   "msg/Waypoint.msg"
   "msg/MoveReq.msg"
   "msg/PoseRPY.msg"
+  "msg/VectorBool.msg"
   "srv/SetOutput.srv"
   "srv/GetInput.srv"
   "srv/SetAttrAll.srv"
