@@ -1,5 +1,5 @@
 # ibt_ros2_interfaces
-**Version:** `1.5.1`
+**Version:** `1.5.2`
 
 ## Messages
 
@@ -120,4 +120,3 @@ Result
 Feedback
 
 - `string status`: status of the move
-- `int16 index`: index of the current request

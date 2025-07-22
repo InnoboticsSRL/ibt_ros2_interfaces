@@ -12,4 +12,3 @@ string error_str        # error message
 ---
 # Feedback
 string status           # status of the move
-int16 index             # index of the current request
