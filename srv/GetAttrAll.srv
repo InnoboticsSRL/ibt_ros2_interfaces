@@ -1,5 +1,5 @@
-uint16 clas
+uint8 clas
 uint8 instance
 ---
-uint8 result_code
-uint16[] result
+string result_message
+uint8[] result
